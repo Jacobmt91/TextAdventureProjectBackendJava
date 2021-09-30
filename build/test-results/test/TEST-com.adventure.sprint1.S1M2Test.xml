@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.adventure.sprint1.S1M2Test" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-09-29T18:31:59" hostname="Amandas-MBP.lan" time="0.025">
+<testsuite name="com.adventure.sprint1.S1M2Test" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-09-29T19:14:14" hostname="Amandas-MBP.lan" time="0.026">
   <properties/>
-  <testcase name="smokeTest()" classname="com.adventure.sprint1.S1M2Test" time="0.025"/>
+  <testcase name="smokeTest()" classname="com.adventure.sprint1.S1M2Test" time="0.026"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
