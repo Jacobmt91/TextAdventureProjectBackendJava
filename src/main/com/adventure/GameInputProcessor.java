@@ -2,6 +2,9 @@ package main.com.adventure;
 
 import main.com.adventure.settings.Command;
 
+import java.nio.charset.StandardCharsets;
+import java.util.Scanner;
+
 public class GameInputProcessor {
 
     /**
@@ -9,8 +12,9 @@ public class GameInputProcessor {
      * @return the response from the user.
      */
     public String prompt() {
+        Scanner scanner = new Scanner(System.in, StandardCharsets.UTF_8);
         System.out.println("Enter your next command:");
-        return "";
+        return scanner.nextLine();
     }
 
     /**
@@ -20,7 +24,8 @@ public class GameInputProcessor {
      * @return - the Command object with the proper verb and blank object
      */
     private Command buildSimpleCommand(String input) {
-        return new Command("", "");
+        String[] inputArray = input.split(" ");
+        return new Command(inputArray[0], "");
     }
 
     /**
@@ -30,7 +35,8 @@ public class GameInputProcessor {
      * @return - the Command object with the proper verb and object
      */
     private Command buildCommandWithObject(String input) {
-        return new Command("", "");
+        String[] inputArray = input.split(" ");
+        return new Command(inputArray[0], inputArray[1]);
     }
 
 
