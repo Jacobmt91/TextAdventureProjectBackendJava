@@ -73,7 +73,7 @@ public class Player {
         } else {
             if (direction.equalsIgnoreCase("east")) {
                 currentLocationIndex++;
-            } else if ( direction.equalsIgnoreCase("west")) {
+            } else if (direction.equalsIgnoreCase("west")) {
                 currentLocationIndex--;
             }
         }
