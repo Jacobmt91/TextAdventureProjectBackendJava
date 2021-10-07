@@ -1,4 +1,4 @@
-package main.com.adventure.world.objects;
+package main.com.adventure.world.objects.holes;
 
 import main.com.adventure.world.objects.keys.Key;
 

@@ -1,7 +1,7 @@
 package main.com.adventure.world.scenes.s2_m4;
 
 import main.com.adventure.world.Direction;
-import main.com.adventure.world.objects.Hole;
+import main.com.adventure.world.objects.holes.Hole;
 import main.com.adventure.world.objects.Shovel;
 import main.com.adventure.world.objects.Tangible;
 import main.com.adventure.world.objects.doors.Door;

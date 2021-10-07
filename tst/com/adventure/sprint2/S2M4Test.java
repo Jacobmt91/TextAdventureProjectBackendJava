@@ -1,7 +1,7 @@
 package com.adventure.sprint2;
 
 import main.com.adventure.world.Direction;
-import main.com.adventure.world.objects.Hole;
+import main.com.adventure.world.objects.holes.Hole;
 import main.com.adventure.world.objects.doors.Door;
 import main.com.adventure.world.objects.keys.Key;
 import main.com.adventure.world.scenes.s2_m4.DigEscapeScene;

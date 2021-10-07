@@ -1,5 +1,6 @@
-package main.com.adventure.world.objects;
+package main.com.adventure.world.objects.holes;
 
+import main.com.adventure.world.objects.Tangible;
 import main.com.adventure.world.objects.keys.Key;
 
 public class Hole extends HoleContent {
