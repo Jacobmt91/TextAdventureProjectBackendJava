@@ -18,6 +18,7 @@ public class S3M1Test {
     @BeforeEach
     public void setup() {
         processor = mock(GameInputProcessor.class);
+        when(processor.getNextCommand()).thenCallRealMethod();
     }
 
     @Test
@@ -27,7 +28,6 @@ public class S3M1Test {
         }
 
         when(processor.prompt()).thenReturn("move west");
-        when(processor.getNextCommand()).thenCallRealMethod();
 
         Command command = processor.getNextCommand();
         assertEquals(CommandVerb.MOVE, command.getVerb());
@@ -61,16 +61,5 @@ public class S3M1Test {
         Command command = processor.getNextCommand();
         assertEquals(CommandVerb.HELP, command.getVerb());
         assertEquals("", command.getObjectName());
-    }
-
-    @Test
-    public void testCommandInvalid() {
-        if (AppSettings.story.ordinal() < AppSettings.Story.S3M1_TestDirections.ordinal()) {
-            return;
-        }
-
-        when(processor.prompt()).thenReturn("Bad command");
-        Command command = processor.getNextCommand();
-        assertEquals(CommandVerb.INVALID, command.getVerb());
     }
 }

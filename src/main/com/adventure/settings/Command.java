@@ -1,5 +1,8 @@
 package main.com.adventure.settings;
 
+import main.com.adventure.settings.exceptions.EmptyCommandException;
+import main.com.adventure.settings.exceptions.InvalidCommandException;
+
 public class Command {
 
     public static final String TAKE = "take";
@@ -8,11 +11,11 @@ public class Command {
     public static final String DIG = "dig";
     public static final String EXAMINE = "examine";
     public static final String LOOK = "look";
-    public static final String CHECK_ITEMS = "check items";
-    public static final String INVALID = "invalid";
+    public static final String INVENTORY = "check items";
+    public static final String FIGHT = "fight";
     public static final String HELP = "help";
 
-    private String verb;
+    private CommandVerb verb;
     private String objectName;
 
     /**
@@ -20,7 +23,7 @@ public class Command {
      * @param verb - the verb of the command
      * @param objectName - the object(s) to which the command is directed.
      */
-    public Command(String verb, String objectName) {
+    public Command(CommandVerb verb, String objectName) {
         this.verb = verb;
         this.objectName = objectName;
     }
@@ -29,7 +32,7 @@ public class Command {
      * Creates a command with no direct object (e.g. "help").
      * @param verb - the verb of the command
      */
-    public Command(String verb) {
+    public Command(CommandVerb verb) {
         this.verb = verb;
         this.objectName = "";
     }
@@ -42,12 +45,16 @@ public class Command {
         this.objectName = objectName;
     }
 
-    public String getVerb() {
-        return verb;
+    public CommandVerb getVerb() {
+        return this.verb;
     }
 
-    public void setVerb(String verb) {
-        this.verb = verb;
+    public void setVerb(String newVerb) {
+        try {
+            this.verb = CommandVerb.getVerb(newVerb);
+        } catch (EmptyCommandException | InvalidCommandException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     @Override

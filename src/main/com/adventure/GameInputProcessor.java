@@ -1,6 +1,9 @@
 package main.com.adventure;
 
 import main.com.adventure.settings.Command;
+import main.com.adventure.settings.CommandVerb;
+import main.com.adventure.settings.exceptions.EmptyCommandException;
+import main.com.adventure.settings.exceptions.InvalidCommandException;
 
 import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
@@ -12,8 +15,8 @@ public class GameInputProcessor {
      * @return the response from the user.
      */
     public String prompt() {
-        Scanner scanner = new Scanner(System.in, StandardCharsets.UTF_8);
         System.out.println("Enter your next command:");
+        Scanner scanner = new Scanner(System.in, StandardCharsets.UTF_8);
         return scanner.nextLine();
     }
 
@@ -25,7 +28,13 @@ public class GameInputProcessor {
      */
     private Command buildSimpleCommand(String input) {
         String[] inputArray = input.split(" ");
-        return new Command(inputArray[0], "");
+        try {
+            CommandVerb verb = CommandVerb.getVerb(inputArray[0]);
+            return new Command(verb, "");
+        } catch (EmptyCommandException | InvalidCommandException e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
     }
 
     /**
@@ -36,7 +45,13 @@ public class GameInputProcessor {
      */
     private Command buildCommandWithObject(String input) {
         String[] inputArray = input.split(" ");
-        return new Command(inputArray[0], inputArray[1]);
+        try {
+            CommandVerb verb = CommandVerb.getVerb(inputArray[0]);
+            return new Command(verb, inputArray[1]);
+        } catch (EmptyCommandException | InvalidCommandException e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
     }
 
 

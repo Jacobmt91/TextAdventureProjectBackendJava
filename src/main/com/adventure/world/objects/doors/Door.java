@@ -15,24 +15,25 @@ import main.com.adventure.world.objects.keys.Key;
 
 public class Door implements Tangible {
 
-    private boolean isOpen;
+
 
     //TODO Add a level property
-    private final int level;
+    private boolean isOpen;
+    private int level;
 
     /**
-     * Default constructor method.
+     * Default no params constructor.
      */
     //TODO Add a default (i.e. no params) constructor here
     public Door() {
-        this.isOpen = false;
-        this.level = 1;
+        level = 1;
+        isOpen = false;
     }
 
     /**
-     * Other constructor method.
-     * @param isOpen - is door open
-     * @param level - the door's level
+     * Constructor that takes an isOpen and level and saves both.
+     * @param isOpen - Bool for weather the door is open
+     * @param level - Level of the door
      */
     //TODO Add a constructor that takes an isOpen and level and saves both
     public Door(boolean isOpen, int level) {

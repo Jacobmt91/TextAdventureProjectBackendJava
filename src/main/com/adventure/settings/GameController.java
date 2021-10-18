@@ -121,22 +121,37 @@ public class GameController {
     }
 
     private void applyCommand(Command command) {
-        if (command.getVerb().equalsIgnoreCase(Command.LOOK)) {
-            describeCurrentScene();
-        } else if (command.getVerb().equalsIgnoreCase(Command.MOVE)) {
-            move(command.getObjectName());
-        } else if (command.getVerb().equalsIgnoreCase(Command.HELP)) {
-            printHelp();
-        } else if (command.getVerb().equalsIgnoreCase(Command.USE)) {
-            use(command.getObjectName());
-        } else if (command.getVerb().equalsIgnoreCase(Command.DIG)) {
-            dig();
-        } else if (command.getVerb().equalsIgnoreCase(Command.EXAMINE)) {
-            examine(command.getObjectName());
-        } else if (command.getVerb().equalsIgnoreCase(Command.TAKE)) {
-            take(command.getObjectName());
-        } else {
-            printInvalidCommand();
+        switch (command.toString()) {
+            case Command.LOOK:
+                describeCurrentScene();
+                break;
+            case Command.MOVE:
+                move(command.getObjectName());
+                break;
+            case Command.HELP:
+                printHelp();
+                break;
+            case Command.USE:
+                use(command.getObjectName());
+                break;
+            case Command.DIG:
+                dig();
+                break;
+            case Command.EXAMINE:
+                examine(command.getObjectName());
+                break;
+            case Command.TAKE:
+                take(command.getObjectName());
+                break;
+            case Command.INVENTORY:
+                player.printItems();
+                break;
+            case Command.FIGHT:
+                startCombat();
+                break;
+            default:
+                printInvalidCommand();
+                break;
         }
     }
 
@@ -213,6 +228,7 @@ public class GameController {
         player.setKey(item);
     }
 
+    // Edit this - Exception
     private void printInvalidCommand() {
         System.out.println("That command is invalid");
     }

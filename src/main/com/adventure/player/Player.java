@@ -1,10 +1,8 @@
 package main.com.adventure.player;
 
 import main.com.adventure.settings.AppSettings;
-import main.com.adventure.world.objects.Shovel;
 import main.com.adventure.world.objects.Tangible;
 import main.com.adventure.world.objects.Weapon;
-import main.com.adventure.world.objects.keys.Key;
 
 public class Player {
 
@@ -12,21 +10,20 @@ public class Player {
     //TODO Add name variable here
     private String name = "";
     private int currentLocationIndex = AppSettings.getStartingLocation();
-    private Key key;
-    private Shovel shovel;
     private int power = 1;
     private int health = 10;
-
+    private Backpack backpack = new Backpack();;
 
     /**
      * Sprint 2 Module 1
      * Saves the player's name. This file should store the name so it can be referenced later. After setting the name,
      * inform the user that the name has been changed by saying "Your name is now {name}".
+     * Initialize backpack.
      * @param newName - the player's name that will be saved
      */
     public void setName(String newName) {
-        this.name = newName;
-        System.out.println("Your name is now " + this.name);
+        name = newName;
+        System.out.printf("Your name is now %s\n", name);
     }
 
     /**
@@ -36,23 +33,18 @@ public class Player {
      * @return The name of the player
      */
     public String getName() {
-        return this.name;
+        return name;
     }
 
     /**
      * Sprint 2 Module 1
-     * The canOpenDoor is calculated by taking the player's level and dividing it by 2.
-     * If the result is greater than 2, the
-     * player can open doors.
+     * The canOpenDoor is calculated by taking the player's level and dividing it by 2. If the result is greater than
+     * 2, theplayer can open doors.
      * @return true if the player's level is enough to open the door.
      */
     public boolean canOpenDoor() {
         return (double) level / 2 > 2;
     }
-
-
-
-
 
     /**
      * Sprint 2 Module 2
@@ -68,16 +60,15 @@ public class Player {
      * @return true if the move is executed. Otherwise, false.
      */
     public boolean move(String direction, boolean isValid) {
-        if (!isValid) {
-            System.out.println(String.format("%1$s is not a valid direction", direction));
+        if (direction.equalsIgnoreCase("east") && isValid) {
+            currentLocationIndex++;
+        } else if (direction.equalsIgnoreCase("west") && isValid) {
+            currentLocationIndex--;
         } else {
-            if (direction.equalsIgnoreCase("east")) {
-                currentLocationIndex++;
-            } else if (direction.equalsIgnoreCase("west")) {
-                currentLocationIndex--;
-            }
+            System.out.printf("%s is not a valid direction\n", direction);
+            return false;
         }
-        return isValid;
+        return true;
     }
 
     /**
@@ -87,6 +78,7 @@ public class Player {
      */
     public void setWeapon(Weapon item) {
         //TODO Complete this function in Sprint 3 Module 2
+        power += item.getPower();
     }
 
     /**
@@ -97,7 +89,7 @@ public class Player {
      */
     public Tangible getItem(String itemName) {
         //TODO Complete this function in Sprint 3 Module 3
-        return null;
+        return backpack.getItem(itemName);
     }
 
     /**
@@ -108,7 +100,7 @@ public class Player {
      */
     public boolean removeItem(Tangible item) {
         //TODO Complete this function in Sprint 3 Module 3
-        return false;
+        return backpack.removeItem(item);
     }
 
     /**
@@ -117,6 +109,7 @@ public class Player {
      */
     public void printItems() {
         //TODO Complete this function in Sprint 3 Module 3
+        backpack.printItems();
     }
 
     /**
@@ -126,22 +119,23 @@ public class Player {
      */
     public void addItem(Tangible item) {
         //TODO Complete this function
+        backpack.addItem(item);
     }
 
-    public void setKey(Key item) {
-        key = item;
+    public void setKey(Tangible item) {
+        addItem(item);
     }
 
-    public Key getKey() {
-        return key;
+    public Tangible getKey() {
+        return backpack.getItem("key");
     }
 
-    public void setShovel(Shovel item) {
-        shovel = item;
+    public void setShovel(Tangible item) {
+        addItem(item);
     }
 
-    public Shovel getShovel() {
-        return shovel;
+    public Tangible getShovel() {
+        return backpack.getItem("shovel");
     }
 
     //////// DON'T CHANGE THE CODE BELOW. ///////////

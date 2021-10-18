@@ -3,26 +3,25 @@ package main.com.adventure.world.objects.holes;
 import main.com.adventure.world.objects.keys.Key;
 
 public class HoleContent {
-
     private Key content;
-    private boolean isCovered;
+    private boolean isCovered = true;
 
     /**
      * Default constructor.
      */
-    public HoleContent() {}
+    public HoleContent() {
+    }
 
     /**
-     * Constructor to pass Key object.
-     * @param content - a Key object
+     * Creates a holes given content.
+     * @param key - Saves a Key object to content
      */
-    public HoleContent(Key content) {
-        this.content = content;
-        this.isCovered = true;
+    public HoleContent(Key key) {
+        this.content = key;
     }
 
     public void setCovered(boolean covered) {
-        isCovered = covered;
+        this.isCovered = covered;
     }
 
     public boolean isCovered() {
@@ -32,5 +31,4 @@ public class HoleContent {
     public Key getKey() {
         return content;
     }
-
 }

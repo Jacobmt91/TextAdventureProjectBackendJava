@@ -14,6 +14,8 @@ main/com/adventure/world/scenes/SceneDescriptionNotFoundException.java
  main.com.adventure.world.scenes.SceneDescriptionNotFoundException
 main/com/adventure/world/objects/doors/OmniDoor.java
  main.com.adventure.world.objects.doors.OmniDoor
+main/com/adventure/settings/exceptions/EmptyCommandException.java
+ main.com.adventure.settings.exceptions.EmptyCommandException
 main/com/adventure/player/Player.java
  main.com.adventure.player.Player
 main/com/adventure/world/objects/Shovel.java
@@ -32,6 +34,8 @@ main/com/adventure/CombatController.java
  main.com.adventure.CombatController
 main/com/adventure/world/objects/keys/ConsoleKey.java
  main.com.adventure.world.objects.keys.ConsoleKey
+main/com/adventure/settings/exceptions/InvalidCommandException.java
+ main.com.adventure.settings.exceptions.InvalidCommandException
 main/com/adventure/world/objects/Tangible.java
  main.com.adventure.world.objects.Tangible
 main/com/adventure/world/objects/TangibleListener.java

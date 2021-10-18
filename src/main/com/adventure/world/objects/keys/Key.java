@@ -16,11 +16,11 @@ import main.com.adventure.world.objects.Tangible;
 public class Key implements Tangible {
 
     //TODO variable for level and name needed here
-    private final int level;
+    private int level;
     private String name;
 
     /**
-     * Default constructor method.
+     * Default constructor no params.
      */
     //TODO Add default (i.e. no params) constructor here
     public Key() {
@@ -28,20 +28,10 @@ public class Key implements Tangible {
         name = "key";
     }
 
-    //TODO add constructor that takes a level and name, and saves it
-
     /**
-     * Other constructor method.
-     * @param level - the key's level
-     */
-    public Key(int level) {
-        this.level = level;
-    }
-
-    /**
-     * Other constructor method.
-     * @param level - the key's level
-     * @param name - the key's name
+     * Constructor to create a Key object.
+     * @param level - level of the key
+     * @param name - name of the key
      */
     //TODO add constructor that takes a level and name, and saves it
     public Key(int level, String name) {
@@ -61,10 +51,7 @@ public class Key implements Tangible {
     }
 
 
-
-
-
-    //******IGNORE THE CODE BELOW******//
+//******IGNORE THE CODE BELOW******//
 
 
     @Override
