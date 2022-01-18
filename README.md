@@ -1,4 +1,4 @@
-# Text Adventure Project
+# Text Adventure Project - Java
 
 What it does
 
